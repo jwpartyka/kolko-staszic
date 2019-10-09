@@ -1,9 +1,9 @@
 // Wyszukiwanie binarne po wyniku.
-// Wynik jest liczbą RZECZYWISTĄ (czyli nie musi być całkowity).
+// Wynik jest liczbą całkowitą.
 // Naszym zadaniem jest zminimalizować wynik.
-// Założenie: Od pewnego momentu, dla wszystkich liczb rzeczywistych istnieje
+// Założenie: Od pewnego momentu, dla wszystkich liczb całkowitych istnieje
 //            poprawne rozwiązanie. Czyli, jeżeli oznaczymy przez 1, że istnieje
-//            rozwiązanie, a prze 0, że nie istnieje, to ma być tak (dla kolejnych liczba rzeczywistych):
+//            rozwiązanie, a prze 0, że nie istnieje, to ma być tak (dla kolejnych liczba całkowitych):
 //            ...000000000011111111111...
 //
 // Jeżeli mamy zmaksymalizować wynik, to założenie jest tak jakby na odwrót.
@@ -13,15 +13,17 @@
 
 using namespace std;
 
-const double EPS = 1e-9, INF = 1e9; // Dokładność z jaką chcemy poznać wynik.
+const int INF = 1e9;
 
 // Funkcja sprawdzająca, czy istnieje poprawne rozwiązanie z wynikiem x.
-bool check(double x) {
+bool check(int x) {
+    // Do zaimplementowania
     return 1;
 }
 
 // Funkcja wypisująca poprawne rozwiązanie dla wyniku x
-void wypisz_wynik_dla(double x) {
+void wypisz_wynik(int x) {
+    // Do zaimplementowania
     return;
 }
 
@@ -33,12 +35,12 @@ int main() {
     // Wyszukiwanie binarne po wyniku.
     // Zmienna 'l' powinna początkowo być ustawiona na najmniejszy możliwy wynik
     // Zmienna 'r' powinna być ustawiona na największy możliwy wynik
-    double l = -INF, r = INF;
-    while (r - l > EPS) {
-        double mid = (l + r) / 2.;
+    int l = -INF, r = INF;
+    while (r - l > 1) {
+        int mid = (l + r) / 2;
         if (check(mid)) {
             // Jeżeli istnieje rozwiązanie dla wartośći mid, to nie musimy już
-            // sprawdzać większych wartośći, bo wiemy, że dla nich też JEST OK.
+            // sprawdzać większych wartośći, bo wiemy, że dla nich też jest OK.
             r = mid;
         } else {
             // W przeciwnym wypadku nie musimy sprawdzać mniejszych wartości,
@@ -46,6 +48,9 @@ int main() {
             l = mid;
         }
     }
-
-    wypisz_wynik_dla(l);
+    if (check(l)) {
+        wypisz_wynik(l);
+    } else {
+        wypisz_wynik(r);
+    }
 }
