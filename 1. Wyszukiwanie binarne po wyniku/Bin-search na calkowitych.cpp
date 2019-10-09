@@ -22,7 +22,7 @@ bool check(int x) {
 }
 
 // Funkcja wypisująca poprawne rozwiązanie dla wyniku x
-void wypisz_wynik_dla(int x) {
+void wypisz_wynik(int x) {
     // Do zaimplementowania
     return;
 }
@@ -40,7 +40,7 @@ int main() {
         int mid = (l + r) / 2;
         if (check(mid)) {
             // Jeżeli istnieje rozwiązanie dla wartośći mid, to nie musimy już
-            // sprawdzać większych wartośći, bo wiemy, że dla nich też JEST OK.
+            // sprawdzać większych wartośći, bo wiemy, że dla nich też jest OK.
             r = mid;
         } else {
             // W przeciwnym wypadku nie musimy sprawdzać mniejszych wartości,
@@ -49,8 +49,8 @@ int main() {
         }
     }
     if (check(l)) {
-        wypisz_wynik_dla(l);
+        wypisz_wynik(l);
     } else {
-        wypisz_wynik_dla(r);
+        wypisz_wynik(r);
     }
 }
